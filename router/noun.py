@@ -24,7 +24,7 @@ def get_all_nouns(gender: Optional[model.Gender] = None, db: Session = Depends(d
 
 @router.get("/{searched_noun}", status_code=status.HTTP_200_OK, response_model=schema.NounWithArticles)
 def get_noun(searched_noun: str, db: Session = Depends(database.get_db)):
-    found_noun = noun.get_by_noun(searched_noun, db)
+    found_noun = noun.get_by_noun(searched_noun.capitalize(), db)
     set_appropriate_articles(found_noun)
     return found_noun
 
