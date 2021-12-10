@@ -7,7 +7,7 @@ import model
 import schema
 
 router = APIRouter(
-    prefix="/api/noun",
+    prefix="/api/nouns",
     tags=["Nouns"]
 )
 
