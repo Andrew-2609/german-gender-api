@@ -4,13 +4,13 @@ from sqlalchemy.orm import Session
 import model
 
 
-def get_all(gender: model.Gender, limit: int, db: Session):
+def get_all(gender: model.Gender, db: Session):
     query = db.query(model.Noun)
 
     if hasattr(gender, "name"):
         query = query.filter(model.Noun.gender == gender.name)
 
-    nouns = query.limit(limit).all()
+    nouns = query.all()
     return nouns
 
 
