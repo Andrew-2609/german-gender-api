@@ -6,6 +6,8 @@ import database
 import model
 import schema
 
+from repository import noun
+
 router = APIRouter(
     prefix="/api/nouns",
     tags=["Nouns"]
@@ -14,8 +16,7 @@ router = APIRouter(
 
 @router.get("/", response_model=List[schema.BaseNoun])
 def get_all_nouns(limit: int = 10, db: Session = Depends(database.get_db)):
-    nouns = db.query(model.Noun).limit(limit).all()
-    return nouns
+    return noun.get_all(limit, db)
 
 
 @router.get("/{noun}", response_model=schema.BaseNoun)
