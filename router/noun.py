@@ -15,14 +15,14 @@ router = APIRouter(
 )
 
 
-@router.get("/", response_model=Page[schema.BaseNoun])
+@router.get("/", response_model=Page[schema.NounWithArticles])
 def get_all_nouns(gender: Optional[model.Gender] = None, db: Session = Depends(database.get_db)):
     nouns = noun.get_all(gender, db)
     set_appropriate_articles(nouns)
     return paginate(nouns)
 
 
-@router.get("/{searched_noun}", response_model=schema.BaseNoun)
+@router.get("/{searched_noun}", response_model=schema.NounWithArticles)
 def get_noun(searched_noun: str, db: Session = Depends(database.get_db)):
     found_noun = noun.get_by_noun(searched_noun, db)
     set_appropriate_articles(found_noun)
