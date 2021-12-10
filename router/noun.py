@@ -1,6 +1,6 @@
 from typing import List
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 import database
@@ -23,13 +23,8 @@ def get_all_nouns(limit: int = 10, db: Session = Depends(database.get_db)):
 
 @router.get("/{noun}", response_model=schema.BaseNoun)
 def get_noun(searched_noun: str, db: Session = Depends(database.get_db)):
-    found_noun = db.query(model.Noun).filter(model.Noun.noun == searched_noun).first()
-
-    if not found_noun:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Noun {searched_noun} was not found")
-
+    found_noun = noun.get_one(searched_noun, db)
     set_appropriate_articles(found_noun)
-
     return found_noun
 
 
