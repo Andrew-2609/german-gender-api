@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -15,15 +15,16 @@ router = APIRouter(
 
 
 @router.get("/", response_model=List[schema.BaseNoun])
-def get_all_nouns(limit: int = 10, db: Session = Depends(database.get_db)):
-    nouns = noun.get_all(limit, db)
+def get_all_nouns(gender: Optional[model.Gender] = None, limit: int = 10,
+                  db: Session = Depends(database.get_db)):
+    nouns = noun.get_all(gender, limit, db)
     set_appropriate_articles(nouns)
     return nouns
 
 
-@router.get("/{noun}", response_model=schema.BaseNoun)
+@router.get("/{searched_noun}", response_model=schema.BaseNoun)
 def get_noun(searched_noun: str, db: Session = Depends(database.get_db)):
-    found_noun = noun.get_one(searched_noun, db)
+    found_noun = noun.get_by_noun(searched_noun, db)
     set_appropriate_articles(found_noun)
     return found_noun
 
