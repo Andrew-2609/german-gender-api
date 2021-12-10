@@ -10,7 +10,7 @@ import schema
 from repository import noun
 
 router = APIRouter(
-    prefix="/api/nouns",
+    prefix="/api/v1/nouns",
     tags=["Nouns"]
 )
 
