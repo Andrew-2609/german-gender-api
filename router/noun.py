@@ -16,3 +16,9 @@ router = APIRouter(
 def get_all_nouns(limit: int = 10, db: Session = Depends(database.get_db)):
     nouns = db.query(model.Noun).limit(limit).all()
     return nouns
+
+
+@router.get("/{noun}", response_model=schema.BaseNoun)
+def get_noun(searched_noun: str, db: Session = Depends(database.get_db)):
+    found_noun = db.query(model.Noun).filter(model.Noun.noun == searched_noun).first()
+    return found_noun
