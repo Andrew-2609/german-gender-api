@@ -1,4 +1,5 @@
 import enum
+from typing import Optional
 
 from pydantic import BaseModel
 
@@ -12,4 +13,4 @@ class BaseNoun(BaseModel):
 
 
 class NounWithArticles(BaseNoun):
-    articles: dict
+    articles: Optional[dict]
