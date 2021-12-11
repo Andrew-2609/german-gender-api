@@ -8,7 +8,8 @@ from database import Base
 class Gender(enum.Enum):
     masculine = "masculine"
     feminine = "feminine"
-    neutral = "neutral"
+    neuter = "neuter"
+    tbd = "tbd"
 
 
 class Noun(Base):
