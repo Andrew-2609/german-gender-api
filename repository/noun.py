@@ -10,8 +10,10 @@ def get_all(gender: model.Gender, db: Session):
 
     if hasattr(gender, "name"):
         query = query.filter(model.Noun.gender == gender.name)
+    else:
+        query = query.filter(model.Noun.gender != "tbd")
 
-    nouns = query.all()
+    nouns = query.order_by(model.Noun.noun).all()
     return nouns
 
 
