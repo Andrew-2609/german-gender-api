@@ -33,7 +33,7 @@ get_all_nouns_responses = {
     },
     422: {
         "description": "Some of the query params is invalid. Probably, it is 'gender', which can be only:"
-                       " masculine, feminine or neutral.",
+                       " masculine, feminine or neuter.",
         "content": {
             "application/json": {
                 "example": {
@@ -44,13 +44,13 @@ get_all_nouns_responses = {
                                 "gender"
                             ],
                             "msg": "value is not a valid enumeration member; permitted:"
-                                   " 'masculine', 'feminine', 'neutral'",
+                                   " 'masculine', 'feminine', 'neuter'",
                             "type": "type_error.enum",
                             "ctx": {
                                 "enum_values": [
                                     "masculine",
                                     "feminine",
-                                    "neutral"
+                                    "neuter"
                                 ]
                             }
                         }
