@@ -1,12 +1,13 @@
-import enum
 from typing import Optional
 
 from pydantic import BaseModel
 
+import model
+
 
 class BaseNoun(BaseModel):
     noun: str
-    gender: enum.Enum
+    gender: model.Gender
 
     class Config:
         orm_mode = True
