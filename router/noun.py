@@ -66,3 +66,5 @@ def check_noun_gender(analysed_noun: model.Noun):
             "dative": "dem",
             "genitive": "des"
         })
+    elif analysed_noun.gender == model.Gender.tbd:
+        analysed_noun.articles = {}
