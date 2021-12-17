@@ -1,7 +1,6 @@
-from typing import Optional
+from typing import Optional, List
 
-from fastapi import APIRouter, Depends, status
-from fastapi_pagination import Page, paginate, add_pagination
+from fastapi import APIRouter, Depends, status, Query
 from sqlalchemy.orm import Session
 
 import database
@@ -16,12 +15,17 @@ router = APIRouter(
 )
 
 
-@router.get("/", status_code=status.HTTP_200_OK, response_model=Page[schema.NounWithArticles],
+@router.get("/", status_code=status.HTTP_200_OK, response_model=List[schema.NounWithArticles],
             responses=docs.noun.get_all_nouns_responses)
-def get_all_nouns(gender: Optional[model.Gender] = None, db: Session = Depends(database.get_db)):
-    nouns = noun.get_all(gender, db)
+def get_all_nouns(
+        gender: Optional[model.Gender] = None,
+        page: int = Query(0, ge=0),
+        size: int = Query(10, ge=1),
+        db: Session = Depends(database.get_db)
+):
+    nouns = noun.get_all(gender, page, size, db)
     set_appropriate_articles(nouns)
-    return paginate(nouns)
+    return nouns
 
 
 @router.get("/{searched_noun}", status_code=status.HTTP_200_OK, response_model=schema.NounWithArticles,
@@ -62,6 +66,3 @@ def check_noun_gender(analysed_noun: model.Noun):
             "dative": "dem",
             "genitive": "des"
         })
-
-
-add_pagination(router)
