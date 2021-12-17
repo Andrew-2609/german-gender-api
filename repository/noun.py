@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from fastapi import HTTPException, status
 from sqlalchemy import text
@@ -6,21 +6,24 @@ from sqlalchemy.orm import Session
 
 import model
 import router.noun
+import schema
 
 
 def get_all(gender: Optional[model.Gender], page: int, size: int, db: Session):
     if gender:
         query = text(
-            "SELECT * FROM nouns WHERE gender= :gender AND id>=(SELECT id FROM nouns LIMIT :page,1) LIMIT :size",
+            "SELECT noun, gender FROM nouns WHERE gender= :gender "
+            "AND id>=(SELECT id FROM nouns LIMIT :page,1) LIMIT :size",
         )
         result = db.execute(query, {"gender": gender.name, "page": page * size, "size": size}).all()
     else:
         query = text(
-            "SELECT * FROM nouns WHERE gender != :gender AND id>=(SELECT id FROM nouns LIMIT :page,1) LIMIT :size",
+            "SELECT noun, gender FROM nouns WHERE gender != :gender "
+            "AND id>=(SELECT id FROM nouns LIMIT :page,1) LIMIT :size",
         )
         result = db.execute(query, {"gender": "tbd", "page": page * size, "size": size}).all()
 
-    return result
+    return [schema.NounWithArticles(noun=r[0], gender=r[1]) for r in result]
 
 
 def get_by_noun(noun: str, db: Session):
