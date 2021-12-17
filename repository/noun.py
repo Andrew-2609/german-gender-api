@@ -1,20 +1,26 @@
+from typing import Optional
+
 from fastapi import HTTPException, status
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 import model
 import router.noun
 
 
-def get_all(gender: model.Gender, db: Session):
-    query = db.query(model.Noun)
-
-    if hasattr(gender, "name"):
-        query = query.filter(model.Noun.gender == gender.name)
+def get_all(gender: Optional[model.Gender], page: int, size: int, db: Session):
+    if gender:
+        query = text(
+            "SELECT * FROM nouns WHERE gender= :gender AND id>=(SELECT id FROM nouns LIMIT :page,1) LIMIT :size",
+        )
+        result = db.execute(query, {"gender": gender.name, "page": page * size, "size": size}).all()
     else:
-        query = query.filter(model.Noun.gender != "tbd")
+        query = text(
+            "SELECT * FROM nouns WHERE gender != :gender AND id>=(SELECT id FROM nouns LIMIT :page,1) LIMIT :size",
+        )
+        result = db.execute(query, {"gender": "tbd", "page": page * size, "size": size}).all()
 
-    nouns = query.order_by(model.Noun.noun).all()
-    return nouns
+    return result
 
 
 def get_by_noun(noun: str, db: Session):
