@@ -1,39 +1,41 @@
 get_all_nouns_responses = {
     200: {
-        "description": "Return a pageable collection of available Nouns in the database.",
+        "description": "Return a pageable collection of available Nouns in the database,"
+                       " excluding Nouns with the gender to be defined.",
         "content": {
             "application/json": {
                 "example": {
-                    "items": [
+                    "content": [
                         {
-                            "noun": "Apfel",
+                            "noun": "Abberufung",
+                            "gender": "feminine",
                             "articles": {
-                                "nominative": "der",
-                                "accusative": "den",
+                                "nominative": "die",
+                                "accusative": "die",
                                 "dative": "den",
                                 "genitive": "der"
                             }
                         },
                         {
-                            "noun": "Angst",
+                            "noun": "Abbestellung",
+                            "gender": "feminine",
                             "articles": {
                                 "nominative": "die",
                                 "accusative": "die",
-                                "dative": "dem",
-                                "genitive": "des"
+                                "dative": "den",
+                                "genitive": "der"
                             }
                         }
                     ],
-                    "total": 2,
-                    "page": 1,
-                    "size": 50
+                    "page": 10,
+                    "size": 2
                 }
             }
         },
     },
     422: {
-        "description": "Some of the query params is invalid. Probably, it is 'gender', which can be only:"
-                       " masculine, feminine or neuter.",
+        "description": "Some of the query params is invalid. Probably, it is 'gender', which can only be:"
+                       " masculine, feminine, neuter or tbd (to be defined).",
         "content": {
             "application/json": {
                 "example": {
@@ -43,14 +45,15 @@ get_all_nouns_responses = {
                                 "query",
                                 "gender"
                             ],
-                            "msg": "value is not a valid enumeration member; permitted:"
-                                   " 'masculine', 'feminine', 'neuter'",
+                            "msg": "value is not a valid enumeration member; permitted: "
+                                   "'masculine', 'feminine', 'neuter', 'tbd'",
                             "type": "type_error.enum",
                             "ctx": {
                                 "enum_values": [
                                     "masculine",
                                     "feminine",
-                                    "neuter"
+                                    "neuter",
+                                    "tbd"
                                 ]
                             }
                         }
@@ -67,12 +70,13 @@ get_noun_responses = {
         "content": {
             "application/json": {
                 "example": {
-                    "noun": "Apfel",
+                    "noun": "Mädchen",
+                    "gender": "neuter",
                     "articles": {
-                        "nominative": "der",
-                        "accusative": "den",
-                        "dative": "den",
-                        "genitive": "der"
+                        "nominative": "das",
+                        "accusative": "das",
+                        "dative": "dem",
+                        "genitive": "des"
                     }
                 }
             }
