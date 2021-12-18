@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional
 
 from fastapi import APIRouter, Depends, status, Query
 from sqlalchemy.orm import Session
@@ -15,7 +15,7 @@ router = APIRouter(
 )
 
 
-@router.get("/", status_code=status.HTTP_200_OK, response_model=List[schema.NounWithArticles],
+@router.get("/", status_code=status.HTTP_200_OK, response_model=dict,
             responses=docs.noun.get_all_nouns_responses)
 def get_all_nouns(
         gender: Optional[model.Gender] = None,
@@ -25,7 +25,8 @@ def get_all_nouns(
 ):
     nouns = noun.get_all(gender, page, size, db)
     set_appropriate_articles(nouns)
-    return nouns
+
+    return {"content": nouns, "page": page, "size": size}
 
 
 @router.get("/{searched_noun}", status_code=status.HTTP_200_OK, response_model=schema.NounWithArticles,
