@@ -57,7 +57,7 @@ def check_noun_gender(analysed_noun: model.Noun):
         analysed_noun.articles = ({
             "nominative": "die",
             "accusative": "die",
-            "dative": "den",
+            "dative": "der",
             "genitive": "der"
         })
     elif analysed_noun.gender == model.Gender.neuter:
