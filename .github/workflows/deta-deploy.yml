@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       
       - name: Log in to Deta and deploy the project
-      - uses: BogDAAAMN/deta-deploy-action@v1.0.1
+        uses: BogDAAAMN/deta-deploy-action@v1.0.1
         with:
           deta-access-token: ${{ secrets.DETA_TOKEN }}
           deta-name: ${{ secrets.DETA_NAME }}
