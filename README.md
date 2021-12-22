@@ -15,7 +15,7 @@ useful for you).
 
 ## The Database
 
-Currently, there are over **10 thousand nouns** in the database used by this API. Unfortunately, it is a bit hard to
+Currently, there are over **10,000 nouns** in the database used by this API. Unfortunately, it is a bit hard to
 make your own database of German nouns without making tons of requests in German dictionary websites.
 
 I did my best to gather as many as I could, not to mention the several checks for misspelling and gender issues.
