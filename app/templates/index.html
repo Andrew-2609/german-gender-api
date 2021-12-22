@@ -1,4 +1,6 @@
 {% extends "base.html" %}
 {% block page_content %}
-    <p class="h1 text-center pt-5">Hello, World!</p>
+    <div class="text-center pt-5">
+        {{ data.text | safe }}
+    </div>
 {% endblock %}
