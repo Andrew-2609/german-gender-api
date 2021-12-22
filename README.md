@@ -15,7 +15,7 @@ useful for you).
 
 ## The Database
 
-Currently, there are over **10,000 nouns** in the database used by this API. Unfortunately, it is a bit hard to
+Currently, there are over **100,000 nouns** in the database used by this API. Unfortunately, it is a bit hard to
 make your own database of German nouns without making tons of requests in German dictionary websites.
 
 I did my best to gather as many as I could, not to mention the several checks for misspelling and gender issues.
@@ -33,7 +33,7 @@ it out by yourself.
 I've applied the most general rules in a loop to save the nouns in the database with their supposed genders, but even
 for the few rules that exist, **there are exceptions**.
 
-The words that don't fit any of the rules I used (over 75,000) were saved as "**tdb**" (to be defined), which means they
+The words that don't fit any of the rules I used (over **75,000**) were saved as "**tdb**" (to be defined), which means they
 will be corrected in the future.
 
 So if you come across a word with the wrong gender or the gender *to be defined*, please **let me know**! 
