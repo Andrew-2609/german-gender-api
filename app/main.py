@@ -25,6 +25,10 @@ app = FastAPI(
         "name": "Andrew Monteiro da Silva",
         "url": "https://github.com/Andrew-2609",
         "email": "andrew.agoravai@gmail.com"
+    },
+    license_info={
+        "name": "MIT License",
+        "url": "https://github.com/Andrew-2609/german-gender-api/blob/main/LICENSE"
     }
 )
 
