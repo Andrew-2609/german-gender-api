@@ -36,5 +36,5 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 model.Base.metadata.create_all(engine)
 
-app.include_router(router=noun.router)
 app.include_router(router=home.router)
+app.include_router(router=noun.router)
