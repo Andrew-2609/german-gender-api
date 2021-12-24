@@ -8,23 +8,11 @@ get_all_nouns_responses = {
                     "content": [
                         {
                             "noun": "Abberufung",
-                            "gender": "feminine",
-                            "articles": {
-                                "nominative": "die",
-                                "accusative": "die",
-                                "dative": "den",
-                                "genitive": "der"
-                            }
+                            "gender": "feminine"
                         },
                         {
                             "noun": "Abbestellung",
-                            "gender": "feminine",
-                            "articles": {
-                                "nominative": "die",
-                                "accusative": "die",
-                                "dative": "den",
-                                "genitive": "der"
-                            }
+                            "gender": "feminine"
                         }
                     ],
                     "page": 10,
@@ -71,13 +59,7 @@ get_noun_responses = {
             "application/json": {
                 "example": {
                     "noun": "Mädchen",
-                    "gender": "neuter",
-                    "articles": {
-                        "nominative": "das",
-                        "accusative": "das",
-                        "dative": "dem",
-                        "genitive": "des"
-                    }
+                    "gender": "neuter"
                 }
             }
         }
