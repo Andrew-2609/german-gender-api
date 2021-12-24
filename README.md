@@ -12,6 +12,10 @@ to [statista.com](https://www.statista.com/statistics/957876/professional-develo
 Well, if that's the case, this API is **made for you**. It will give you the **grammatical gender** of the noun you
 want.
 
+## Technologies
+
+Coming soon...
+
 ## The Database
 
 Currently, there are over **100,000 nouns** in the database used by this API. Unfortunately, it is a bit hard to make
