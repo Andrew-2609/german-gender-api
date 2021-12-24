@@ -23,7 +23,7 @@ def get_all(gender: Optional[model.Gender], page: int, size: int, db: Session):
         )
         result = db.execute(query, {"gender": "tbd", "page": page * size, "size": size}).all()
 
-    return [schema.NounWithArticles(noun=r[0], gender=r[1]) for r in result]
+    return [schema.BaseNoun(noun=r[0], gender=r[1]) for r in result]
 
 
 def get_by_noun(noun: str, db: Session):
