@@ -1,6 +1,41 @@
 {% extends "base.html" %}
 {% block page_content %}
-    <div class="text-center pt-5">
-        {{ data.text | safe }}
+    <div class="container pt-4">
+        <h2 class="roboto-400 pt-2">Welcome to the German Gender API</h2>
+
+        <p class="roboto-200">
+            With it, you can get the grammatical gender of German nouns in a very simple and practical way.
+        </p>
+        <p>
+            How about accessing <a href="https://german-gender-api.deta.dev/api/v1/nouns/Mädchen" target="_blank"
+                                   class="german-red-link">german-gender-api.deta.dev/api/v1/nouns/Mädchen</a>
+            instead of searching "what's the gender of Mädchen in German"?
+        </p>
+
+        <hr/>
+
+        <p>
+            If it's helpful to you, you can simply search for the nouns you want. If you are a <em>developer</em>
+            looking for an API like this to use in your website, there's also a pageable object of all nouns in the
+            database.
+        </p>
+
+        <p>
+            For further details, access the <a href="/docs" class="german-red-link">Documentation</a>.
+        </p>
     </div>
+
+    {#    <div class="container pt-2">#}
+    {#        <h2 class="roboto-400">How to use it?</h2>#}
+    {#    </div>#}
+
+    {#    <div class="container">#}
+    {#        <p>#}
+    {#            You can also check and download the repository of this API by clicking <a#}
+    {#                href="https://github.com/Andrew-2609/german-gender-api" target="_blank" class="german-red-link">here</a>.#}
+    {#            <br/>#}
+    {#            <span id="leave-a-star">If this API was helpful to you, please, consider <strong>leaving a star</strong> in the repository above!</span>#}
+    {#        </p>#}
+    {#    </div>#}
+
 {% endblock %}
