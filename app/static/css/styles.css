@@ -1,19 +1,40 @@
-#gga-main-navbar {
+#content {
+    height: 100vh;
+}
+
+.roboto-400 {
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+
+.roboto-200 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.german-one-cursive {
     font-family: 'Germania One', cursive;
+}
+
+.german-red-link {
+    color: #b73b13;
+    text-decoration: none;
+}
+
+#gga-main-navbar {
     background: linear-gradient(to right, #2f2f2f, #b73b13);
 }
 
+#leave-a-star {
+    font-size: 0.9em;
+}
+
 #gga-main-footer {
-    position: absolute;
+    padding-top: 1em;
     bottom: 0;
     width: 100%;
     height: 3rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
-
-#gga-main-footer > p > a {
-    text-decoration: none;
-    color: #b73b13;
+    border-top: 1px solid #2f2f2f;
 }
